@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import { GlobalStyles } from './GlobalStyles';
 
 // API
 import { getPokemonList, getPokemonDescription } from './API'
@@ -17,6 +17,12 @@ async function logData() {
 
 logData()
 
-export default function App() {
-  return <Pokedex/>
-};
+const App: React.FC = () => (
+  <>
+   <Pokedex/>
+   <GlobalStyles/>
+  </>
+)
+
+export default App
+  
