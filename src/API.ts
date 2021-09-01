@@ -9,7 +9,7 @@ export type Pokemons = {
     results: Pokemon[]
 }
 
-export const getPokemonList = async(): Promise<Pokemons> => {
+export const getPokemonList = async(): Promise<Array<Pokemon>> => {
     const data = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=150')
     .then((res) => res.json() )
     return data.results

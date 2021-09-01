@@ -3,16 +3,30 @@ import React, {useState, useEffect} from 'react'
 import { getPokemonList } from '../API'
 import { Pokemon } from '../API'
 
-const initialState = {
-    results: [] as Pokemon[]
-}
+export const useFetchPokemon = () => {
+    const [state, setState] = useState([] as Array<Pokemon>)
+    const [error, setError] = useState(false)
+    const [loading, setLoading] = useState(true)
 
-export const UseFetchPokemon = () => {
-    const [pokemoeList, setPokemonList] = useState(initialState)
+    const fetchPokemon = async () => {
+        try {
+            setLoading(true)
+            setError(false)
+
+            const list = await getPokemonList()
+
+            setState(list)
+
+        } catch (error) {
+            setError(true)
+        }
+
+        setLoading(false)
+    }
 
     useEffect( () => {
+        fetchPokemon()
+    }, [])
 
-    }, [pokemoeList])
-
-    return { pokemoeList }
+    return {state, error, loading}
 }
