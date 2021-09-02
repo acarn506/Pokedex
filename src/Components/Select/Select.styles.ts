@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
 
 export const SelectEL = styled.select`
     appearance: none;
-    border: 2pxs solid rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     color: rgba(0, 0, 0, 0.8);
     width: 100%;
