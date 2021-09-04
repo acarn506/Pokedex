@@ -10,7 +10,7 @@ type Props = {
 
 const Base: React.FC<Props> = ({ children, header }) =>  (
     <Wrapper>
-        <h1>{header}</h1>
+        <h1 className='header'>{header}</h1>
         <Content>
             {children}
         </Content>

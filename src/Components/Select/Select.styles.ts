@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
         right: 14px;
         top: 50%;
         transform: translateY(-50%);
-        width: 16px;
+        width: 20px;
         z-index: 1;
     }
 `
