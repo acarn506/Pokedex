@@ -15,8 +15,8 @@ export const getPokemonList = async(): Promise<Array<Pokemon>> => {
     return data.results
 }
 
-export const getPokemonDescription = async(): Promise<string> => {
-    const data = await fetch('https://pokeapi.co/api/v2/pokemon-species/1/')
+export const getPokemonDescription = async(name: string): Promise<string> => {
+    const data = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}/`)
     .then(res => res.json())
     return data.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, " ")
 }

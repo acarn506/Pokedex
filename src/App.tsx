@@ -11,8 +11,6 @@ async function logData() {
   const list = await getPokemonList()
   console.log(list)
 
-  const description = await getPokemonDescription()
-  console.log(description)
 }
 
 logData()
