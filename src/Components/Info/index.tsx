@@ -14,7 +14,7 @@ const Info: React.FC<Props> = ({ name, description}) => (
         <Content>
             <Text>
                 <h1 className='name'>{name}</h1>
-                <h4>{description}</h4>
+                <h4 className='description'>{description}</h4>
             </Text>
         </Content>
     </Wrapper>

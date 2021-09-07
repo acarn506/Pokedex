@@ -7,13 +7,14 @@ export const Wrapper = styled.div`
    
 `
 export const Content = styled.div`
-    padding: 20px;
-    margin: 0 auto;
+    margin: 30px auto;
     background: var(--background);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px
+    width: 500px;
+    border: 5px solid #bbb7b7;
+    border-radius: 6px;
 `
 
 export const Image = styled.img`

@@ -11,6 +11,7 @@ import Base from './Base'
 import Select from './Select'
 import PokemonSprite from './PokemonSprite'
 import Info from './Info'
+import Button from './Button'
 
 // Hook
 import { useFetchPokemon } from '../Hook/useFetchPokemon'
@@ -19,7 +20,7 @@ import { useFetchPokemon } from '../Hook/useFetchPokemon'
 import { SPRITE_URL } from '../config'
 
 // Helpers
-import { getPokemonId } from '../helper'
+import { getPokemonId, prevButton, nextButton } from '../helper'
 
 const Pokedex: React.FC = () => {
     const [selectValue, setSelectValue] = useState('')
@@ -59,6 +60,8 @@ const Pokedex: React.FC = () => {
                     <Select getValue={getSelectValue} pokemonList={pokemonList}/>
                     <PokemonSprite image={`${SPRITE_URL}${pokemonId}.png`}/>
                     <Info name={selectValue} description={description}/>
+                    <Button text="Prev" callback={ () => setSelectValue(prevButton(pokemonList, pokemonId))}/>
+                    <Button text="Next" callback={ () => setSelectValue(nextButton(pokemonList, pokemonId))}/>
                 </Base>
             </>
     )

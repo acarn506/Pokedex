@@ -33,5 +33,5 @@ export const SelectEL = styled.select`
     padding-left: 20px;
     padding-right: 60px;
     height: 50px;
-    font-size: 1rem;
+    font-size: 1.5rem;
 `
