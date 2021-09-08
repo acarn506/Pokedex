@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 // API
-import { getPokemonSprite, getPokemonDescription } from '../API'
+import { getPokemonDescription } from '../API'
 
 // Types 
 import { Pokemons } from '../API'
@@ -21,6 +21,9 @@ import { SPRITE_URL } from '../config'
 
 // Helpers
 import { getPokemonId, prevButton, nextButton } from '../helper'
+
+// Styles 
+import '../index.css'
 
 const Pokedex: React.FC = () => {
     const [selectValue, setSelectValue] = useState('')
@@ -60,8 +63,11 @@ const Pokedex: React.FC = () => {
                     <Select getValue={getSelectValue} pokemonList={pokemonList}/>
                     <PokemonSprite image={`${SPRITE_URL}${pokemonId}.png`}/>
                     <Info name={selectValue} description={description}/>
-                    <Button text="Prev" callback={ () => setSelectValue(prevButton(pokemonList, pokemonId))}/>
-                    <Button text="Next" callback={ () => setSelectValue(nextButton(pokemonList, pokemonId))}/>
+                    <div className='button-container'>
+                        <Button text="Prev" callback={ () => setSelectValue(prevButton(pokemonList, pokemonId))}/>
+                        <Button text="Next" callback={ () => setSelectValue(nextButton(pokemonList, pokemonId))}/>
+                    </div>
+                    
                 </Base>
             </>
     )

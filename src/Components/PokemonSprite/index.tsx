@@ -15,7 +15,7 @@ const PokemonSprite: React.FC<Props> = ({ image }) => {
     return(
         <Wrapper>
             <Content>
-                <Image src={image} width='250' height='250'/>
+                <Image src={image} />
             </Content>
         </Wrapper>
     )

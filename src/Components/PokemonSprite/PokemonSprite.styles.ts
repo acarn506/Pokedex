@@ -1,24 +1,29 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    position: relative;
     max-width: var(--maxWidth);
-    margin: 20px 0;
-   
-`
-export const Content = styled.div`
-    margin: 30px auto;
-    background: var(--background);
+    margin: 20px auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
+    
+    
+   
+`
+export const Content = styled.div`
+    position: relative;
+    background: var(--background);
     border: 5px solid #bbb7b7;
-    border-radius: 6px;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    padding: 15px;
 `
 
 export const Image = styled.img`
-     object-fit: cover;
-     
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 `
 
