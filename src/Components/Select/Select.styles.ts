@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
         transform: translateY(-50%);
         width: 20px;
         z-index: 1;
+        pointer-events: none;
     }
 `
 

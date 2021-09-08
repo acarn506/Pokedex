@@ -3,9 +3,6 @@ import React, { useState, useEffect } from 'react'
 // API
 import { getPokemonDescription } from '../API'
 
-// Types 
-import { Pokemons } from '../API'
-
 // Components 
 import Base from './Base'
 import Select from './Select'
@@ -62,7 +59,7 @@ const Pokedex: React.FC = () => {
                 <Base header={'Pokedex'}>
                     <Select getValue={getSelectValue} pokemonList={pokemonList}/>
                     <PokemonSprite image={`${SPRITE_URL}${pokemonId}.png`}/>
-                    <Info name={selectValue} description={description}/>
+                    <Info name={selectValue.charAt(0).toUpperCase() + selectValue.slice(1)} description={description}/>
                     <div className='button-container'>
                         <Button text="Prev" callback={ () => setSelectValue(prevButton(pokemonList, pokemonId))}/>
                         <Button text="Next" callback={ () => setSelectValue(nextButton(pokemonList, pokemonId))}/>

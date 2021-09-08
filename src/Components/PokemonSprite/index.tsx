@@ -3,9 +3,6 @@ import React from 'react'
 // Styles 
 import { Wrapper, Content, Image } from './PokemonSprite.styles'
 
-// API
-import { getPokemonSprite } from '../../API'
-
 // Types 
 type Props = {
     image : string
