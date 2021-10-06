@@ -6,8 +6,6 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
    
 `
 export const Content = styled.div`
@@ -15,8 +13,8 @@ export const Content = styled.div`
     background: var(--background);
     border: 5px solid #bbb7b7;
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     padding: 15px;
 `
 

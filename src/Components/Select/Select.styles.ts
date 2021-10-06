@@ -5,6 +5,7 @@ import Arrow from '../../images/Arrow-down.svg'
 
 export const Wrapper = styled.div`
     position: relative;
+    margin-top:40px;
     min-width: 200px;
 
     &::after {

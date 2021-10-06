@@ -25,7 +25,7 @@ import '../index.css'
 const Pokedex: React.FC = () => {
     const [selectValue, setSelectValue] = useState('')
     const [pokemonId, setPokemonID] = useState('1')
-    const [description, setDescription] = useState('')
+    const [description, setDescription] = useState('Pokemon Name & Description')
 
     const  { state: pokemonList, error, loading }  = useFetchPokemon()
 

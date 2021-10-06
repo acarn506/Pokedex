@@ -9,6 +9,7 @@ export const Content = styled.div`
     background-color: #f9f7f3;
     padding: 10px;
     border-radius: 6px;
+    text-align: center;
 `
 
 export const Text = styled.div`

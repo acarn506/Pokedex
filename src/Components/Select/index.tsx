@@ -19,7 +19,7 @@ const Select: React.FC<Props> = ({ pokemonList, getValue }) => {
     return (
         <Wrapper>
             <SelectEL onChange={(event) => onChange(event)}>
-                <option value=""></option>
+                <option value="">Search for Pokemon</option>
                 {pokemonList.map( pokemon => (
                     <option key={pokemon.name} value={pokemon.name}>{pokemon.name}</option>
                 ))}
