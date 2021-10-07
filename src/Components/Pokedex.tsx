@@ -49,9 +49,6 @@ const Pokedex: React.FC = () => {
 
     }, [selectValue])
 
-    // Check for Pokemon List
-    console.log('pokemonList', pokemonList)
-
     if (error) return <div>Something is Wrong...</div>
 
     return (
