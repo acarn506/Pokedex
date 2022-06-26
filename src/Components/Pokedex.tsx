@@ -24,7 +24,7 @@ import '../index.css'
 
 const Pokedex: React.FC = () => {
     const [selectValue, setSelectValue] = useState('')
-    const [pokemonId, setPokemonID] = useState('1')
+    const [pokemonId, setPokemonID] = useState('0')
     const [description, setDescription] = useState('Pokemon Name & Description')
 
     const  { state: pokemonList, error, loading }  = useFetchPokemon()
@@ -54,7 +54,7 @@ const Pokedex: React.FC = () => {
     return (
             <>
                 <Base header={'Pokedex'}>
-                    <Select getValue={getSelectValue} pokemonList={pokemonList}/>
+                    <Select getValue={getSelectValue} pokemonList={pokemonList} selectedPokemon={selectValue}/>
                     <PokemonSprite image={`${SPRITE_URL}${pokemonId}.png`}/>
                     <Info name={selectValue.charAt(0).toUpperCase() + selectValue.slice(1)} description={description}/>
                     <div className='button-container'>

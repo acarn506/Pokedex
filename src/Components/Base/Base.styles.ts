@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     padding: 20px;
     border-radius: 10px;
-    height: 750px;
+    height: 100vh;
 
     @media screen and (max-width: 700px) {
         width: 550px;
