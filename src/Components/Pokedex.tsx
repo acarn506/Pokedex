@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 // API
-import { getPokemonDescription } from '../API'
+import { fetchPokemonDescription, fetchPokemonType } from '../API'
 
 // Components 
 import Base from './Base'
@@ -23,43 +23,45 @@ import { getPokemonId, prevButton, nextButton } from '../helper'
 import '../index.css'
 
 const Pokedex: React.FC = () => {
-    const [selectValue, setSelectValue] = useState('')
+    const [selectedPokemon, setSelectedPokemon] = useState('')
     const [pokemonId, setPokemonID] = useState('0')
     const [description, setDescription] = useState('Pokemon Name & Description')
+    const [type, setType] = useState('Unknown')
 
     const  { state: pokemonList, error, loading }  = useFetchPokemon()
 
     //Function passed down to child component
-    const getSelectValue = (selectData : string): void => {
-        setSelectValue(selectData)
+    const getSelectedPokemon = (selectData : string): void => {
+        setSelectedPokemon(selectData)
     }
 
-    const fetchDescription = async () => {
-        const value = await getPokemonDescription(selectValue)
-        setDescription(value)
+    const getPokemonInfo = async () => {
+        const [description, type] = await Promise.all([fetchPokemonDescription(selectedPokemon), fetchPokemonType(selectedPokemon)])
+        setDescription(description)
+        setType(type)
     }
 
     // Fetch info based on Selection
     useEffect(() => {
 
-        if (selectValue === '') return
+        if (selectedPokemon === '') return
 
-        setPokemonID(getPokemonId(pokemonList, selectValue))
-        fetchDescription()
+        setPokemonID(getPokemonId(pokemonList, selectedPokemon))
+        getPokemonInfo()
 
-    }, [selectValue])
+    }, [selectedPokemon])
 
     if (error) return <div>Something is Wrong...</div>
 
     return (
             <>
                 <Base header={'Pokedex'}>
-                    <Select getValue={getSelectValue} pokemonList={pokemonList} selectedPokemon={selectValue}/>
-                    <PokemonSprite image={`${SPRITE_URL}${pokemonId}.png`}/>
-                    <Info name={selectValue.charAt(0).toUpperCase() + selectValue.slice(1)} description={description}/>
+                    <Select getValue={getSelectedPokemon} pokemonList={pokemonList} selectedPokemon={selectedPokemon}/>
+                    <PokemonSprite image={`${SPRITE_URL}${pokemonId}.png`} type={type}/>
+                    <Info name={selectedPokemon.charAt(0).toUpperCase() + selectedPokemon.slice(1)} description={description} type={type}/>
                     <div className='button-container'>
-                        <Button text="Prev" callback={ () => setSelectValue(prevButton(pokemonList, pokemonId))}/>
-                        <Button text="Next" callback={ () => setSelectValue(nextButton(pokemonList, pokemonId))}/>
+                        <Button text="Prev" callback={ () => setSelectedPokemon(prevButton(pokemonList, pokemonId))}/>
+                        <Button text="Next" callback={ () => setSelectedPokemon(nextButton(pokemonList, pokemonId))}/>
                     </div>
                     
                 </Base>

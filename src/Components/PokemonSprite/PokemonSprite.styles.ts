@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `
 export const Content = styled.div`
     position: relative;
-    background: var(--background);
+    background: var(--${props => props.color});
     border: 5px solid #bbb7b7;
     border-radius: 50%;
     width: 250px;

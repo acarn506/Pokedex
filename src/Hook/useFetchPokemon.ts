@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 // API
-import { getPokemonList } from '../API'
+import { fetchPokemonList } from '../API'
 import { Pokemon } from '../API'
 
 export const useFetchPokemon = () => {
@@ -13,7 +13,7 @@ export const useFetchPokemon = () => {
             setLoading(true)
             setError(false)
 
-            const list = await getPokemonList()
+            const list = await fetchPokemonList()
 
             setState(list)
 
