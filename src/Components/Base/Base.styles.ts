@@ -19,6 +19,8 @@ export const Wrapper = styled.div`
 
     .header {
         color: #f0f51e;
+        margin: 0;
+        font-size: 45px;
     }
 
     .circle-container {
@@ -30,8 +32,8 @@ export const Wrapper = styled.div`
 
     .cb {
         display: block;
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
         border-radius: 50%;
         background-color: #41a3f7;
         border: 5px solid white;

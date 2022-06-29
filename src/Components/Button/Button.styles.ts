@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.button`
     display: block;
-    background: #1b65d4;
-    width: 150px;
-    height: 50px;
+    background: #ffcb05;
+    width: 130px;
+    height: 40px;
     border-radius: 30px;
     color: var(--white);
     border: 0;

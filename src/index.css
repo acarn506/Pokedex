@@ -16,4 +16,5 @@ code {
   display: flex;
   justify-content: center;
   margin: 0;
+  gap: 15px;
 }

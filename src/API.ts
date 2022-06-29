@@ -9,6 +9,23 @@ export type Pokemons = {
     results: Pokemon[]
 }
 
+// Interface 
+interface Type {
+    name : string
+    url : string
+}
+
+interface TypeInfo { 
+    slot : number
+    type : Type
+}
+
+export type PokemonInfo = {
+    types : TypeInfo []
+    height: string
+    weight: string
+}
+
 export const fetchPokemonList = async(): Promise<Array<Pokemon>> => {
     const data = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=150')
     .then((res) => res.json() )
@@ -21,11 +38,12 @@ export const fetchPokemonDescription = async(name: string): Promise<string> => {
     return data.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, " ")
 }
 
-export const fetchPokemonType = async(name: string): Promise<string> => {
+export const fetchPokemonInfo = async(name: string): Promise<PokemonInfo> => {
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
     .then(res => res.json())
     console.log('DATA', data)
-    return data.types[0].type.name
+    const {types, height, weight} = data
+    return {types, height, weight}
 }
 
 export function getPokemonSprite() {

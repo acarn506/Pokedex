@@ -1,21 +1,25 @@
 import React from 'react'
 
 // Styles 
-import { Wrapper, Content, Text } from './Info.styles'
+import { Wrapper, Content, Text, UnorderedList, Item } from './Info.styles'
 
 // Types 
 type Props = {
     name: string,
     description: string
-    type: string
+    types: string[]
 }
 
-const Info: React.FC<Props> = ({ name, description, type}) => (
+const Info: React.FC<Props> = ({ name, description, types}) => (
     <Wrapper>
         <Content>
             <Text>
                 <h1 className='name'>{name}</h1>
-                <h4>Type: {type.charAt(0).toUpperCase() + type.slice(1)}</h4>
+                <UnorderedList>
+                {types.map( type => {
+                    return ( <Item key={type} color={type}>{type}</Item>)
+                })}
+            </UnorderedList>
                 <h4 className='description'>{description}</h4>
             </Text>
         </Content>
