@@ -9,13 +9,8 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
     border-radius: 10px;
     height: 100vh;
-
-    @media screen and (max-width: 700px) {
-        width: 550px;
-    }
 
     .header {
         color: #f0f51e;
@@ -64,6 +59,19 @@ export const Wrapper = styled.div`
         border-radius: 50%;
         background-color: green;
         margin: 0 2px;
+    }
+
+    @media screen and (max-width: 700px) {
+        width: 550px;
+        .cb {
+            display: none;
+        }
+    } 
+
+
+    @media screen and (max-width: 550px) {
+        width: 450px;
+        height: 100%
     }
 `
 

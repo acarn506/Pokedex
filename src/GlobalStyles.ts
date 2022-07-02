@@ -2,7 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     :root {
-        --maxWidth: 900px;
+        --maxWidth: 850px;
+        --mobileMaxWidth: 550px;
         --darkPurple: #6800b3;
         --white: #f8f8ff;
         --red: #e22740;

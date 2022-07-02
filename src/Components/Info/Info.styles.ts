@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
     width: 500px;
+
+    @media screen and (max-width: 550px) {
+        width: 420px;
+    } 
     
 ` 
 
@@ -44,7 +48,8 @@ export const Item = styled.li`
     height: 30px;
     background-color: var(--${props => props.color});
     border-radius: 0.8rem;
-    padding: 5px;
+    padding: 6px;
+    color: white;
     font-weight: bold;
-    color: black;
+    font-family: Arial, Helvetica, sans-serif;
 `

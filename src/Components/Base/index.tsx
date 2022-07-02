@@ -10,7 +10,6 @@ type Props = {
 
 const Base: React.FC<Props> = ({ children, header }) =>  (
     <Wrapper>
-        
         <section className="circle-container">  
             <div className='cb'></div> 
             <div className='cr'></div>

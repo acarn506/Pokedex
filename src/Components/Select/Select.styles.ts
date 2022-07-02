@@ -5,8 +5,9 @@ import Arrow from '../../images/Arrow-down.svg'
 
 export const Wrapper = styled.div`
     position: relative;
+    display: flex;
+    justify-content: center;
     margin-top:40px;
-    min-width: 200px;
 
     &::after {
         background-image: url('${Arrow}');
@@ -23,6 +24,11 @@ export const Wrapper = styled.div`
         width: 20px;
         z-index: 1;
         pointer-events: none;
+    }
+
+    @media screen and (max-width: 550px) {
+        width: 375px;
+        left: 20px;
     }
 `
 
