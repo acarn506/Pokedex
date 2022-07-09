@@ -14,7 +14,8 @@ export const useFetchPokemon = () => {
             setError(false)
 
             const list = await fetchPokemonList()
-
+            list.forEach( pokemon => decodeURI(pokemon.name))
+            
             setState(list)
 
         } catch (error) {

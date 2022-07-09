@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 // API
-import { fetchPokemonDescription, fetchPokemonInfo, PokemonInfo } from '../API'
+import { fetchPokemonDescription, fetchPokemonInfo, Pokemon } from '../API'
 
 // Components 
 import Base from './Base'
@@ -17,42 +17,29 @@ import { useFetchPokemon } from '../Hook/useFetchPokemon'
 import { SPRITE_URL } from '../config'
 
 // Helpers
-import { getPokemonId, prevButton, nextButton } from '../helper'
+import { prevButton, nextButton } from '../helper'
 
 // Styles 
 import '../index.css'
 
 
 const Pokedex: React.FC = () => {
-    const [selectedPokemon, setSelectedPokemon] = useState('')
-    const [pokemonId, setPokemonID] = useState('0')
+    const [selectedPokemon, setSelectedPokemon] = useState<Pokemon>({id : 0, name : '', image: ''})
     const [description, setDescription] = useState('Pokemon Name & Description')
-    const [pokemonInfo, setPokemonInfo] = useState<PokemonInfo | undefined>(undefined)
-
-    let mainType = ''
-    let typeList : string[] = []
-    let height = ''
-    let weight = ''
-    
-    if (pokemonInfo) {
-        mainType = pokemonInfo.types[0].type.name
-        height = pokemonInfo.height
-        weight = pokemonInfo.weight
-
-        typeList = pokemonInfo.types.map( info => {
-            return info.type.name
-        })
-    }
+    const [pokemonInfo, setPokemonInfo] = useState<Array<string>>([])
 
     const  { state: pokemonList, error, loading }  = useFetchPokemon()
+    
 
     //Function passed down to child component
     const getSelectedPokemon = (selectData : string): void => {
-        setSelectedPokemon(selectData)
+        let index : number
+        index = pokemonList.findIndex( pokemon => pokemon.name === selectData)
+        setSelectedPokemon(pokemonList[index])
     }
 
     const getPokemonInfo = async () => {
-        const [description, info] = await Promise.all([fetchPokemonDescription(selectedPokemon), fetchPokemonInfo(selectedPokemon)])
+        const [description, info] = await Promise.all([fetchPokemonDescription(selectedPokemon.name), fetchPokemonInfo(selectedPokemon.id)])
         setDescription(description)
         setPokemonInfo(info)
     }
@@ -60,10 +47,10 @@ const Pokedex: React.FC = () => {
     // Fetch info based on Selection
     useEffect(() => {
 
-        if (selectedPokemon === '') return
+        if (selectedPokemon.id === 0) return
 
-        setPokemonID(getPokemonId(pokemonList, selectedPokemon))
         getPokemonInfo()
+        
 
     }, [selectedPokemon])
 
@@ -72,14 +59,13 @@ const Pokedex: React.FC = () => {
     return (
             <>
                 <Base header={'Pokedex'}>
-                    <Select getValue={getSelectedPokemon} pokemonList={pokemonList} selectedPokemon={selectedPokemon}/>
-                    <PokemonSprite image={`${SPRITE_URL}${pokemonId}.png`} type={mainType}/>
-                    <Info name={selectedPokemon.charAt(0).toUpperCase() + selectedPokemon.slice(1)} description={description} types={typeList}/>
+                    <Select getValue={getSelectedPokemon} pokemonList={pokemonList} selectedPokemon={selectedPokemon.name}/>
+                    <PokemonSprite image={`${SPRITE_URL}${selectedPokemon.id}.png`} type={pokemonInfo[0]}/>
+                    <Info name={selectedPokemon.name} description={description} types={pokemonInfo}/>
                     <div className='button-container'>
-                        <Button text="Prev" callback={ () => setSelectedPokemon(prevButton(pokemonList, pokemonId))}/>
-                        <Button text="Next" callback={ () => setSelectedPokemon(nextButton(pokemonList, pokemonId))}/>
+                        <Button text="Prev" callback={ () => setSelectedPokemon(prevButton(pokemonList, selectedPokemon.id))}/>
+                        <Button text="Next" callback={ () => setSelectedPokemon(nextButton(pokemonList, selectedPokemon.id))}/>
                     </div>
-                    
                 </Base>
             </>
     )

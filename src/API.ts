@@ -1,51 +1,37 @@
 
 // Types
 export type Pokemon = {
+    id: number
     name: string,
-    url: string
+    image: string
 }
 
 export type Pokemons = {
     results: Pokemon[]
 }
 
-// Interface 
-interface Type {
-    name : string
-    url : string
-}
-
-interface TypeInfo { 
-    slot : number
-    type : Type
-}
-
-export type PokemonInfo = {
-    types : TypeInfo []
-    height: string
-    weight: string
-}
-
 export const fetchPokemonList = async(): Promise<Array<Pokemon>> => {
-    const data = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=150')
+    const data = await fetch('https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json')
     .then((res) => res.json() )
-    return data.results
+    console.log('data', data)
+    return data
 }
 
 export const fetchPokemonDescription = async(name: string): Promise<string> => {
-    const data = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}/`)
+    const data = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name.toLocaleLowerCase().replace(' ', '-')}/`)
     .then(res => res.json())
-    return data.flavor_text_entries[0].flavor_text.replace(/[\n\f]/g, " ")
+    // Find and return Selected Pokemon's English Description 
+    let flavor_text_entries = data.flavor_text_entries
+    let englishDescription  = flavor_text_entries.find( (entry : any) => entry.language.name === 'en') 
+    return englishDescription.flavor_text.replace(/[\n\f]/g, " ")
 }
 
-export const fetchPokemonInfo = async(name: string): Promise<PokemonInfo> => {
-    const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+export const fetchPokemonInfo = async(id: number): Promise<Array<string>> => {
+    console.log('fetch id', id)
+    const data = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${id}.json`)
     .then(res => res.json())
-    console.log('DATA', data)
-    const {types, height, weight} = data
-    return {types, height, weight}
+    console.log('DATA', data.type)
+    const type : string[] = data.type
+    return type
 }
 
-export function getPokemonSprite() {
-    return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'
-}

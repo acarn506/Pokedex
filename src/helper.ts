@@ -2,45 +2,37 @@
 import { Pokemon } from "./API"
 
 export const getPokemonId = (pokemonList : Array<Pokemon>, pokemonName: string): string => {
-    let index = 0
+    let index
 
     index = pokemonList.findIndex( pokemon => pokemon.name === pokemonName)
-    index = index + 1
-
-    return index.toString()
+    return pokemonList[index].id.toString()
 }
 
-export const prevButton = (pokemonList : Array<Pokemon>, pokemonId: string): string => {
-    let index = parseInt(pokemonId)
+export const prevButton = (pokemonList : Array<Pokemon>, pokemonId: number): Pokemon => {
+    let index = pokemonId
 
     index--
     if (index < 1) {
-        index = 150
+        index = 809
     }
 
-    for (let i = 0; i < pokemonList.length; i++) {
-        if (index === i + 1) {
-            return pokemonList[i].name
-        }
-    }
+    let pokemon = pokemonList.findIndex(pokemon => pokemon.id === index) >= 0 ? pokemonList[pokemonList.findIndex(pokemon => pokemon.id === index)]
+    : pokemonList[pokemonList.findIndex(pokemon => pokemon.id === index - 1)]
 
-    return 'bulbasaur'
+    return pokemon
 }
 
-export const nextButton = (pokemonList : Array<Pokemon>, pokemonId: string): string => {
-    let index = parseInt(pokemonId)
+export const nextButton = (pokemonList : Array<Pokemon>, pokemonId: number): Pokemon => {
+    let index = pokemonId
 
     index++
-    if (index > pokemonList.length) {
+    if (index > 809) {
         index = 1
     }
 
-    for (let i = 0; i < pokemonList.length; i++) {
-        if (index === i + 1) {
-            return pokemonList[i].name
-        }
-    }
-
-    return 'mewtwo'
+    let pokemon = pokemonList.findIndex(pokemon => pokemon.id === index) >= 0 ? pokemonList[pokemonList.findIndex(pokemon => pokemon.id === index)]
+    : pokemonList[pokemonList.findIndex(pokemon => pokemon.id === index + 1)]
+    
+    return pokemon
 }
 

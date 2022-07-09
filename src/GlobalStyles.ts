@@ -9,23 +9,24 @@ export const GlobalStyles = createGlobalStyle`
         --red: #e22740;
         --background: #b4d6f3;
         --fontBig: 20px;
-        --fire: #F08030;
-        --grass: #78C850;
-        --normal: #A8A878;
-        --electric: #F8D030;
-        --water: #6890F0;
-        --rock: #B8A038;
-        --bug: #A8B820;
-        --ghost: #705898;
-        --flying: #ccc287;
-        --poison: #A040A0;
-        --ground: #E0C068;
-        --fighting: #C03028;
-        --psychic:#F85888;
-        --dragon: #7038F8;
-        --ice: #98D8D8;
-        --fairy: #EE99AC;
-        --steel: #999999;
+        --Fire: #F08030;
+        --Grass: #78C850;
+        --Normal: #A8A878;
+        --Electric: #F8D030;
+        --Water: #6890F0;
+        --Rock: #B8A038;
+        --Bug: #A8B820;
+        --Ghost: #705898;
+        --Flying: #ccc287;
+        --Poison: #A040A0;
+        --Ground: #E0C068;
+        --Fighting: #C03028;
+        --Psychic:#F85888;
+        --Dragon: #7038F8;
+        --Ice: #98D8D8;
+        --Fairy: #EE99AC;
+        --Steel: #999999;
+        --Dark: #453a3a;
     }
 
     * {
