@@ -19,7 +19,7 @@ const Info: React.FC<Props> = ({ name, description, types}) => (
                 {types.map( type => {
                     return ( <Item key={type} color={type}>{type.toUpperCase()}</Item>)
                 })}
-            </UnorderedList>
+                </UnorderedList>
                 <h4 className='description'>{description}</h4>
             </Text>
         </Content>

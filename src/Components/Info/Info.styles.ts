@@ -13,7 +13,6 @@ export const Content = styled.div`
     background-color: #262424;
     padding: 10px;
     border-radius: 6px;
-    text-align: center;
 `
 
 export const Text = styled.div`
@@ -27,11 +26,13 @@ export const Text = styled.div`
     }
 
     .description {
-        margin: 0 20px 20px 20px;
+        margin: 0 5px 5px 5px;
+        padding: 10px;
         color: white;
         font-family: Roboto;
-        font-size: 1.1rem;
-
+        font-size: 1.5ch;
+        background-color: #646262;
+        border-radius: 6px;
     }
 `
 
@@ -41,6 +42,7 @@ export const UnorderedList = styled.ul`
     justify-content: center;
     padding: 0;
     gap: 25px;
+    text-align: center;
 `
 
 export const Item = styled.li`

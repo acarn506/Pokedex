@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
-    margin-top:40px;
+    margin-top: 10px;
 
     &::after {
         background-image: url('${Arrow}');

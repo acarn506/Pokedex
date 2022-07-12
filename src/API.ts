@@ -13,7 +13,7 @@ export type Pokemons = {
 export const fetchPokemonList = async(): Promise<Array<Pokemon>> => {
     const data = await fetch('https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json')
     .then((res) => res.json() )
-    console.log('data', data)
+    // console.log('data', data)
     return data
 }
 
@@ -27,11 +27,15 @@ export const fetchPokemonDescription = async(name: string): Promise<string> => {
 }
 
 export const fetchPokemonInfo = async(id: number): Promise<Array<string>> => {
-    console.log('fetch id', id)
+    // console.log('fetch id', id)
     const data = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${id}.json`)
     .then(res => res.json())
-    console.log('DATA', data.type)
-    const type : string[] = data.type
-    return type
+    const types : string[] = data.type
+    if (id === 1) {
+        return types.filter( type => {
+            return type === 'Grass' || type === 'Poison'
+        })
+    }
+    return types
 }
 
